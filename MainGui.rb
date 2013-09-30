@@ -1,18 +1,20 @@
 require_relative 'imports'
-
 class MainGui < Imports::JFrame
-	def initialize
-		super "Test"
+	def initialize(name)
+		super name
 
-		self.initUI
+		initUI
 	end
 
 	def initUI
-		self.setSize 300,300
-		self.setDefaultCloseOperation Imports::JFrame::EXIT_ON_CLOSE
-		self.setLocationRelativeTo nil
-		self.setVisible true
+		setSize 300,300
+		setDefaultCloseOperation Imports::JFrame::EXIT_ON_CLOSE
+		setLocationRelativeTo nil
+		setVisible true
+	end
+
+	def hideShow
+		vis = isVisible
+		setVisible (not vis)
 	end
 end
-
-MainGui.new
