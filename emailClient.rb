@@ -16,8 +16,16 @@ module EmailClient
  		end
 
  		def sendMessage(to,sub,text)
+ 			begin
  			message = Imports::MimeMessage.new @session
- 			message.sentFrom Imports::InternetAddress.new @mailFrom
+ 			message.setFrom Imports::InternetAddress.new @mailFrom
+ 			message.addRecipient Imports::Message::RecipientType::TO,Imports::InternetAddress.new(to)
+ 			message.setSubject sub
+ 			message.setText text
+
+ 			rescue Imports::MessagingException => e
+ 				e.printStackTrace
+ 			end
  		end
  	end
 end
