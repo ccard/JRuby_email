@@ -6,12 +6,16 @@ module EmailClient
  		def initialize(from,pass)
  			@mailFrom = from
  			@pass = pass
- 			@host = 'localhost'
+ 			@host = 'aol.smtp.com'
+ 			@port = 993
  		end
 
  		def startSession
  			@prop = Imports::System.getProperties
  			@prop.setProperty "mail.smtp.host",@host
+ 			@prop.setProperty "mail.smtp.port",@port
+ 			@prop.setProperty "mail.user",@mailFrom
+ 			@prop.setProperty "mail.password",@pass
  			@session = Imports::Session.getDefaultInstance @prop
  		end
 
@@ -22,6 +26,7 @@ module EmailClient
  			message.addRecipient Imports::Message::RecipientType::TO,Imports::InternetAddress.new(to)
  			message.setSubject sub
  			message.setText text
+ 			Imports::Transport.send(message);
 
  			rescue Imports::MessagingException => e
  				e.printStackTrace
