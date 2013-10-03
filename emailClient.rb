@@ -7,7 +7,7 @@ module EmailClient
  			@mailFrom = from
  			@pass = pass
  			@host = 'aol.smtp.com'
- 			@port = 993
+ 			@port = "993"
  		end
 
  		def startSession
