@@ -6,7 +6,7 @@ module EmailClient
  		def initialize(from,pass)
  			@mailFrom = from
  			@pass = pass
- 			@host = 'aol.smtp.com'
+ 			@host = 'smtp.aol.com'
  			@port = "993"
  		end
 
