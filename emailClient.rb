@@ -7,15 +7,12 @@ module EmailClient
  			@mailFrom = from
  			@pass = pass
  			@host = 'smtp.aol.com'
- 			@port = "993"
+ 			@port = 587
  		end
 
  		def startSession
  			@prop = Imports::System.getProperties
  			@prop.setProperty "mail.smtp.host",@host
- 			@prop.setProperty "mail.smtp.port",@port
- 			@prop.setProperty "mail.user",@mailFrom
- 			@prop.setProperty "mail.password",@pass
  			@session = Imports::Session.getDefaultInstance @prop
  		end
 
@@ -26,8 +23,10 @@ module EmailClient
  			message.addRecipient Imports::Message::RecipientType::TO,Imports::InternetAddress.new(to)
  			message.setSubject sub
  			message.setText text
- 			Imports::Transport.send(message);
-
+ 			trans = @session.getTransport("smtp")
+ 			trans.connect @host,@port,@mailFrom,@pass
+ 			trans.sendMessage message,message.getAllRecipients()
+ 			trans.close
  			rescue Imports::MessagingException => e
  				e.printStackTrace
  			end
