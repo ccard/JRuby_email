@@ -1,6 +1,11 @@
 module Gui
 	include Java
 	import 'javax.swing.JFrame'
+	import 'javax.swing.JDialog'
+	import 'javax.swing.JLabel'
+	import 'javax.swing.JPasswordField'
+	import 'javax.swing.JButton'
+	import 'java.awt.event.ActionListener'
 end
 
 module Email
