@@ -1,7 +1,11 @@
-module Imports
+module Gui
+	include Java
+	import 'javax.swing.JFrame'
+end
+
+module Email
 	include Java
 	require 'javax.mail.jar'
-	import 'javax.swing.JFrame'
 	import 'java.lang.System'
 	import 'javax.mail.Session'
 	import 'javax.mail.MessagingException'
