@@ -1,5 +1,5 @@
 require_relative 'imports'
-class MainGui < Imports::JFrame
+class MainGui < Gui::JFrame
 	def initialize(name)
 		super name
 
@@ -8,7 +8,7 @@ class MainGui < Imports::JFrame
 
 	def initUI
 		setSize 300,300
-		setDefaultCloseOperation Imports::JFrame::EXIT_ON_CLOSE
+		setDefaultCloseOperation Gui::JFrame::EXIT_ON_CLOSE
 		setLocationRelativeTo nil
 		setVisible true
 	end
