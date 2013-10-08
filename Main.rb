@@ -7,7 +7,7 @@ require 'highline/import'
 def get_pass(prompt="Enter Password")
 	ask(prompt) {|q| q.echo = 'x'}
 end
-pass = get_pass
+#pass = get_pass
 
 login = LoginGui.new "sukhoiscard@aol.com"
 
