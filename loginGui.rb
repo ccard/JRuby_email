@@ -1,8 +1,7 @@
 require_relative "imports"
 
 class LoginGui < Gui::JDialog
-	attr :pass,:passField
-	attr_reader :ready
+	attr :pass,:passField,:ready
 	def initialize(email)
 		super nil
 		@ready = false
@@ -11,7 +10,7 @@ class LoginGui < Gui::JDialog
 		setLayout Gui::GridLayout.new(3,1)
 		@passField = Gui::JPasswordField.new
 		button_ok = Gui::JButton.new "ok"
-		button_ok.addActionListener Buttonpress.new
+		button_ok.addActionListener Buttonpress.new(self)
 		label = Gui::JLabel.new "Enter Password"
 
 		add label
@@ -21,15 +20,40 @@ class LoginGui < Gui::JDialog
 		setVisible true
 	end
 
+	def pass=val
+		@pass = val
+	end
+
+	def ready=val
+		@ready = val
+	end
+
+	def ready
+		@ready
+	end
+
+	def getField
+		@passField
+	end
+
 	def getPass
-		@pass
+		string = @pass.map {|c| c.chr}
+		string.inject("") { |c, r| r= "#{c}#{r}" }
+	end
+
+	def close
+		setVisible false
 	end
 
 	class Buttonpress
  		include Gui::ActionListener
+ 			def initialize(login)
+ 				@log = login
+ 			end
+
 			def actionPerformed(e)
-				@pass = @passField.getPassword
-				@ready = true
+				@log.pass = @log.getField.getPassword
+				@log.ready = true
 			end
 	end
 end
