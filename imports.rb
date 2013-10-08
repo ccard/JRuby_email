@@ -6,6 +6,7 @@ module Gui
 	import 'javax.swing.JPasswordField'
 	import 'javax.swing.JButton'
 	import 'java.awt.event.ActionListener'
+	import 'java.awt.GridLayout'
 end
 
 module Email
