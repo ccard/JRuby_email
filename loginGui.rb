@@ -1,21 +1,29 @@
 require_relative "imports"
 
 class LoginGui < Gui::JDialog
-	attr :pass,:passField,:ready
+	attr :pass,:passField,:userName
+	attr_reader :ready,:uname
 	def initialize(email)
 		super nil
 		@ready = false
 		setTitle "Login"
 		setSize 300,300
-		setLayout Gui::GridLayout.new(3,1)
+		setLayout Gui::GridLayout.new(3,2)
 		@passField = Gui::JPasswordField.new
-		button_ok = Gui::JButton.new "ok"
-		button_ok.addActionListener Buttonpress.new(self)
-		label = Gui::JLabel.new "Enter Password"
+		@userName = Gui::JTextField.new
+		button_ok = Gui::JButton.new "Login"
+		button_ok.addActionListener OkButtonpress.new(self)
+		button_cancle = Gui::JButton.new "Cancle"
+		button_cancle.addActionListener CancelButtonpress.new(self)
+		label = Gui::JLabel.new "User Name"
+		label2 = Gui::JLabel.new "Password"
 
 		add label
+		add @userName
+		add label2
 		add @passField
 		add button_ok
+		add button_cancle
 
 		setVisible true
 	end
@@ -28,12 +36,8 @@ class LoginGui < Gui::JDialog
 		@ready = val
 	end
 
-	def ready
-		@ready
-	end
-
-	def getField
-		@passField
+	def uname=val
+		@uname = val
 	end
 
 	def getPass
@@ -45,14 +49,25 @@ class LoginGui < Gui::JDialog
 		setVisible false
 	end
 
-	class Buttonpress
+	class CancelButtonpress
+		include Gui::ActionListener
+		def initialize(login)
+			@log = login
+		end
+		def actionPerformed(e)
+			Email::System.exit 0
+		end
+	end
+
+	class OkButtonpress
  		include Gui::ActionListener
  			def initialize(login)
  				@log = login
  			end
 
 			def actionPerformed(e)
-				@log.pass = @log.getField.getPassword
+				@log.uname = @log.userName.getText
+				@log.pass = @log.passField.getPassword
 				@log.ready = true
 			end
 	end

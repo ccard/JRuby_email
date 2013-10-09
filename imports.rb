@@ -7,6 +7,7 @@ module Gui
 	import 'javax.swing.JButton'
 	import 'java.awt.event.ActionListener'
 	import 'java.awt.GridLayout'
+	import 'javax.swing.JTextField'
 end
 
 module Email
