@@ -7,7 +7,10 @@ module Gui
 	import 'javax.swing.JButton'
 	import 'java.awt.event.ActionListener'
 	import 'java.awt.GridLayout'
+	import 'java.awt.GridBagLayout'
+	import 'java.awt.GridBagConstraints'
 	import 'javax.swing.JTextField'
+	import 'javax.swing.JTextArea'
 end
 
 module Email
