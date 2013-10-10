@@ -13,7 +13,7 @@ class MainGui < Gui::JFrame
 		setLocationRelativeTo nil
 		setLayout Gui::GridBagLayout.new
 		@constraint = Gui::GridBagConstraints.new
-		@constraint.fill = Gui::GridBagConstraints.HORIZONTAL
+		@constraint.fill = Gui::GridBagConstraints::HORIZONTAL
 		setVisible true
 	end
 
@@ -22,6 +22,7 @@ class MainGui < Gui::JFrame
 		@constraint.gridx = 0
 		@constraint.gridy = 0
 		@constraint.weightx = 0.5
+		labelFrom.setVisible true
 		add labelFrom,@constraint
 
 		labelAddress = Gui::JLabel.new @client.mailFrom
