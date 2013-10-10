@@ -1,5 +1,5 @@
 require_relative 'imports'
-class MainGui < Gui::JFrame
+class ComposeGui < Gui::JFrame
 	attr :client
 	def initialize(name,eclient)
 		super name

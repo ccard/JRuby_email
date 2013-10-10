@@ -1,9 +1,9 @@
-require_relative 'MainGui'
+require_relative 'ComposeGui'
 require_relative 'emailClient'
 require_relative 'loginGui'
 
 
-login = LoginGui.new "sukhoiscard@aol.com"
+login = LoginGui.new "Login"
 
 until login.ready
 
@@ -13,9 +13,7 @@ pass =  login.getPass
 user = login.uname
 login.close
 
-email = EmailClient::EmailClient.new user,pass
-email.startSession
+email_client = EmailClient::EmailClient.new user,pass
+email_client.startSession
 
-mainframe = MainGui.new "EmailClient", email
-
-#email.sendMessage "sukhoiscard@aol.com","test","me"
+ComposeGui.new "Compose", email_client
