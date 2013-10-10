@@ -3,10 +3,10 @@ require_relative "imports"
 class LoginGui < Gui::JDialog
 	attr :pass,:passField,:userName
 	attr_reader :ready,:uname
-	def initialize(email)
+	def initialize(name)
 		super nil
 		@ready = false
-		setTitle "Login"
+		setTitle name
 		setSize 300,300
 		setLayout Gui::GridLayout.new(3,2)
 		@passField = Gui::JPasswordField.new
