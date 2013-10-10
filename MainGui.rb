@@ -5,6 +5,7 @@ class MainGui < Gui::JFrame
 		super name
 		@client = eclient
 		initUI
+		addFields
 	end
 
 	def initUI
@@ -14,6 +15,7 @@ class MainGui < Gui::JFrame
 		setLayout Gui::GridBagLayout.new
 		@constraint = Gui::GridBagConstraints.new
 		@constraint.fill = Gui::GridBagConstraints::HORIZONTAL
+		#@constraint.anchor = Gui::GridBagConstraints::NORTH
 		setVisible true
 	end
 
