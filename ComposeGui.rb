@@ -20,7 +20,7 @@ class ComposeGui < Gui::JFrame
 
 	def addFields
 		labelFrom = Gui::JLabel.new "From:"
-		#@constraint.anchor = Gui::GridBagConstraints::NORTH
+		@constraint.anchor = Gui::GridBagConstraints::NORTHWEST
 		@constraint.gridx = 0
 		@constraint.gridy = 0
 		@constraint.weightx = 1
